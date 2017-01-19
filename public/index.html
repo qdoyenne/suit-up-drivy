@@ -2,20 +2,54 @@
 <html>
   <head>
     <title>CSS/HTML Workshop with Drivy</title>
+    <link media="screen" rel="stylesheet" href="drivy.css" type="text/css">
   </head>
   <body>
-    <div id="car">
-      <input class="model" type="text" placeholder="Car model"/>
-      <input class="price-by-day" type="number" placeholder="Price by day"/>
-      <input class="price-by-km" type="number" placeholder="Price by km"/>
-    </div>
-    <div id="rental">
-      <input class="begin" type="date" placeholder="Rental begin date"/>
-      <input class="end" type="date" placeholder="Rental end date"/>
-      <input class="distance" type="number" placeholder="Distance in km"/>
-      <input class="option" type="checkbox" placeholder="Deductible option"/>
-    </div>
-    <button id="compute">Compute</button>
+    <div id="bloc_page">
+    <h1> Drivy </h1>
+
+    <div id="galerie">
+            <div id="banniere_description">
+              Choisissez vos voitures parmis des milliers de modèles
+            </div>
+          
+          <img src="banniere1.jpg" id="suivant" alt="suivant">
+          <script type="text/javascript">
+          var images = new Array();
+          images.push("banniere1.jpg");
+          images.push("banniere2.jpg");
+          var i = 0;   
+          function ChangerImage(){
+          document.getElementById("suivant").src = images[i]; 
+          if(i < images.length-1){
+          i++;
+          }
+          else{
+          i = 0;
+          }
+          setTimeout("ChangerImage()", 4000)
+          }          
+          window.onload = function(){
+          ChangerImage();
+          }
+        </script><br><br><br>
+
+
+    <fieldset>
+      <legend> Calculez votre dépense rapidement : </legend>
+        <div id="car">
+          <input class="model" type="text" placeholder="Car model" required/>
+          <input class="price-by-day" type="number" placeholder="Price by day" required/>
+          <input class="price-by-km" type="number" placeholder="Price by km" required/>
+        </div>
+        <div id="rental">
+          <input class="begin" type="date" placeholder="Rental begin date" required/>
+          <input class="end" type="date" placeholder="Rental end date" required/>
+          <input class="distance" type="number" placeholder="Distance in km" required/>
+          <input class="option" type="checkbox" placeholder="Deductible option" required/>
+        </div><br>
+        <button id="compute">Compute</button>
+    </fieldset>
     <div id="actors"></div>
     <script id="template" type="x-tmpl-mustache">
       {{#actors}}
@@ -26,8 +60,40 @@
         </div>
       {{/actors}}
     </script>
+
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.2.1/mustache.min.js"></script>
     <script src="drivy.js"></script>
     <script src="index.js"></script>
+    <br><br><br>
+    <footer>
+        <div id="adresse">
+          <h2>Découvrir</h2>
+          <ul>
+            <li><a href="#">Assurance</a></li>
+            <li><a href="#">Contrat de location</a></li>
+            <li><a href="#">Professionnels</a></li>
+            <li><a href="#">Applis mobile</a></li>
+            <li><a href="#">Bons plans</a></li>
+          </ul>
+        </div>
+        <div id="aide">
+          <h2>Aides</h2>
+          <ul>
+            <li><a href="#">Accueil de l'aide</a></li>
+            <li><a href="#">Aide proprietaire</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        <div id="suivre">
+        <h2>Nous Suivre</h2>
+          <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+          </ul>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
